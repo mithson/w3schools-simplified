@@ -26,6 +26,15 @@ def sql():
 def python():
     return render_template('python.html')
 
+
+@app.route('/bootstrap')
+def bootstrap():
+    return render_template('bootstrap.html')
+
+@app.route('/mongodb')
+def mongodb():
+    return render_template('mongodb.html')
+
 @app.route('/javascript')
 def javascript():
     return redirect(url_for('js'))

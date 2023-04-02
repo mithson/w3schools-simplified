@@ -1,0 +1,2608 @@
+<html>
+
+<head>
+  <title>MongoDB W3Schools Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='w3schools.css') }}">
+  <base href="https://www.w3schools.com/mongodb" target="_blank">
+</head>
+
+<body>
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Tutorial</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="/default.asp">❮ Home</a>
+    <a class="w3-right w3-btn" href="mongodb_get_started.php">Next ❯</a>
+  </div>
+
+  <div class="w3-panel w3-info intro" style="background-color:#f3ecea;color:#000;">
+    <div class="w3-hide-small" style="float:right;font-size:70px;color:#ffc0c7">[+:</div>
+    <p>MongoDB is a document database. It stores data in a type of JSON format called BSON.</p>
+    <p>If you are unfamiliar with JSON, check out our <a href="/js/js_json.asp">JSON tutorial</a>.</p>
+    <p>A record in MongoDB is a document, which is a data structure composed of key value pairs similar to the structure
+      of JSON objects.</p>
+    <a class="ws-btn w3-margin-bottom startlearningbtn" href="mongodb_get_started.php">Start learning MongoDB now »</a>
+  </div>
+
+  <h2>A MongoDB Document</h2>
+
+  <p>Records in a MongoDB database are called documents, and the field values may include numbers, strings, booleans,
+    arrays, or even nested documents.</p>
+  <div class="w3-example">
+    <h3>Example Document</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+	title: "Post Title 1",
+	body: "Body of post.",
+	category: "News",
+	likes: 1,
+	tags: ["news", "events"],
+	date: Date()
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Learning by Examples</h2>
+
+  <p>Our "Show MongoDB" tool makes it easy to demonstrate MongoDB. It shows both the code and the result.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>Find all documents that have a category of "news".</p>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find( {category: "News"} )
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_query" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+  <h2>Learning by Exercises</h2>
+  <form autocomplete="off" id="w3-exerciseform" action="exercise.php?filename=exercise_get_started1" method="post"
+    target="_blank">
+    <h2>MongoDB Exercises</h2>
+    <div class="exercisewindow">
+      <h2>Exercise:</h2>
+      <p>What type of database is MongoDB?</p>
+      <div class="exerciseprecontainer">
+        <pre>MongoDB is a <input name="ex1" maxlength="8" style="width: 86px;"> database.
+</pre>
+
+      </div>
+      <br>
+      <button type="submit" class="w3-btn w3-margin-bottom">Submit Answer »</button>
+      <p><a target="_blank" href="exercise.php?filename=exercise_get_started1">Start the Exercise</a></p>
+    </div>
+  </form>
+
+  <hr>
+  <style>
+    #img_mylearning {
+      max-width: 100%;
+    }
+  </style>
+  <h2>My Learning</h2>
+
+  <p>Track your progress with the free "My Learning" program here at W3Schools.</p>
+  <p>Log in to your account, and start earning points!</p>
+  <p>This is an optional feature. You can study W3Schools without using My Learning.</p>
+
+  <a href="https://my-learning.w3schools.com/" target="_blank">
+    <img id="img_mylearning" loading="lazy" src="/images/mylearning.png" style="max-width:100%;"></a>
+  <br>
+  <!--
+<a class="ws-btn w3-margin-bottom"
+ href="https://profile.w3schools.com/log-in?redirect_url=https%3A%2F%2Fmy-learning.w3schools.com"
+ target="_blank"
+ style="font-size: 18px;padding-left:25px;padding-right:25px;
+ font-family : 'Source Sans Pro', sans-serif;
+ margin-top:6px;"
+ >
+ Sign up
+</a>
+-->
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="/default.asp">❮ Home</a>
+    <a class="w3-right w3-btn" href="mongodb_get_started.php">Next ❯</a>
+  </div>
+
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Getting Started</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="index.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_query_api.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB</h2>
+
+  <p>MongoDB is a document database and can be installed locally or hosted in the cloud.</p>
+
+  <hr>
+
+  <h2>SQL vs Document Databases</h2>
+
+  <p>SQL databases are considered relational databases.
+    They store related data in separate tables.
+    When data is needed, it is queried from multiple tables to join the data back together.</p>
+
+  <p>MongoDB is a document database which is often referred to as a non-relational database.
+    This does not mean that relational data cannot be stored in document databases.
+    It means that relational data is stored differently.
+    A better way to refer to it is as a non-tabular database.</p>
+
+  <p>MongoDB stores data in flexible documents.
+    Instead of having multiple tables you can simply keep all of your related data together.
+    This makes reading your data very fast.</p>
+
+  <p>You can still have multiple groups of data too. In MongoDB, instead of tables these are called collections.</p>
+
+  <hr>
+
+  <h2>Local vs Cloud Database</h2>
+
+  <p>MongoDB can be installed locally, which will allow you to host your own MongoDB server on your hardware.
+    This requires you to manage your server, upgrades, and any other maintenance.</p>
+
+  <p>You can download and use the MongoDB open source
+    <a target="_blank"
+      href="https://www.mongodb.com/try/download/community?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Community
+      Server</a>
+    on your hardware for free.
+  </p>
+
+  <p>However, for this course we are going to use MongoDB Atlas, a cloud database platform.
+    This is much easier than hosting your own local database.</p>
+
+  <p>To be able to experiment with the code examples, you will need access to a MongoDB database.</p>
+
+  <p>Sign up for a free
+    <a
+      href="https://www.mongodb.com/cloud/atlas/register?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">MongoDB
+      Atlas</a>
+    account to get started.
+  </p>
+
+  <hr>
+
+  <h2>Creating a Cluster</h2>
+
+  <p>After you have created your account, set up a free "Shared Cluster" then choose your preferred cloud provider and
+    region.</p>
+
+  <p>By default, MongoDB Atlas is completely locked down and has no external access.</p>
+
+  <p>You will need to set up a user and add your IP address to the list of allowed IP addresses.</p>
+
+  <p>Under "Database Access", create a new user and keep track of the username and password.</p>
+
+  <p>Next, under "Network Access", add your current IP address to allow access from your computer.</p>
+
+  <hr>
+
+  <h2>Install MongoDB Shell (mongosh)</h2>
+
+  <p>There are many ways to connect to your MongoDB database.</p>
+
+  <p>We will start by using the MongoDB Shell, <code class="w3-codespan">mongosh</code>.</p>
+
+  <p>Use the
+    <a target="_blank"
+      href="https://docs.mongodb.com/mongodb-shell/install/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">official
+      instructions</a>
+    to install <code class="w3-codespan">mongosh</code> on your operating system.
+  </p>
+
+  <p>To verify that it has been installed properly, open your terminal and type:</p>
+
+  <div class="w3-example">
+    <div class="w3-code notranslate w3-black">
+      mongosh --version
+    </div>
+  </div>
+
+  <p>You should see that the latest verion is installed.</p>
+
+  <p>The version used in this tutorial is v1.3.1.</p>
+
+  <hr>
+
+  <h2>Connect to the database</h2>
+
+  <p>To connect to your database, you will need your database specific connection string.</p>
+
+  <p>In the MongoDB Atlas dashboard, under "Databases", click the "Connect" button for your Cluster.</p>
+
+  <p>Next, choose "Connect with the MongoDB Shell".</p>
+
+  <p>Copy your connection string.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>Your connection string should look similar to this:</p>
+    <div class="w3-code notranslate w3-black">
+      mongosh "mongodb+srv://cluster0.ex4ht.mongodb.net/myFirstDatabase" --apiVersion 1 --username YOUR_USER_NAME
+    </div>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_get_started" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <p>Paste your connection string into your terminal and press enter.</p>
+
+  <p>You will be prompted to enter your database user password that you created earlier.</p>
+
+  <p>You are now connected to the database!</p>
+
+  <hr>
+
+  <h2>What Next?</h2>
+
+  <p>In the following sections we will use 'mongosh' to create, read, update, and delete (CRUD) items in your database.
+  </p>
+
+  <p>After getting the basics down, we will move on to using MongoDB with other backend technologies like Node.js.</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="index.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_query_api.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Query API</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_get_started.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_create_database.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Query API</h2>
+
+  <p>The
+    <a target="_blank"
+      href="https://www.mongodb.com/docs/manual/query-api/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">MongoDB
+      Query API</a>
+    is the way you will interact with your data.
+  </p>
+
+  <p>The MongoDB Query API can be used two ways:</p>
+  <ul>
+    <li>CRUD Operations</li>
+    <li>Aggregation Pipelines</li>
+  </ul>
+
+  <hr>
+
+  <h2>MongoDB Query API Uses</h2>
+
+  <p>You can use the MongoDB Query API to perform:</p>
+
+  <ul>
+
+
+    <li>Adhoc queries with <code class="w3-codespan">mongosh</code>, Compass, VS Code, or a MongoDB driver for the
+      programming language you use.</li>
+    <li>Data transformations using aggregation pipelines.</li>
+    <li>Document join support to combine data from different collections.</li>
+    <li>Graph and geospatial queries.</li>
+    <li>Full-text search.</li>
+    <li>Indexing to improve MongoDB query performance.</li>
+    <li>Time series analysis.</li>
+  </ul>
+
+  <p>Let's <a href="mongodb_mongosh_create_database.php">get started</a>!</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_get_started.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_create_database.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB mongosh Create Database</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_query_api.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_create_collection.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Create Database using mongosh</h2>
+
+  <p>After connecting to your database using <code class="w3-codespan">mongosh</code>,
+    you can see which database you are using by typing <code class="w3-codespan">db</code> in your terminal.</p>
+
+  <p>If you have used the connection string provided from the MongoDB Atlas dashboard,
+    you should be connected to the <code class="w3-codespan">myFirstDatabase</code> database.</p>
+
+  <hr>
+
+  <h2>Show all databases</h2>
+
+  <p>To see all available databases, in your terminal type <code class="w3-codespan">show dbs</code>.</p>
+
+  <p>Notice that <code class="w3-codespan">myFirstDatabase</code> is not listed.
+    This is because the database is empty.
+    An empty database is essentially non-existant.</p>
+
+  <hr>
+
+  <h2>Change or Create a Database</h2>
+
+  <p>You can change or create a new database by typing <code class="w3-codespan">use</code> then the name of the
+    database.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>Create a new database called "blog":</p>
+    <div class="w3-code notranslate w3-black">
+      use blog
+    </div>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_create_database" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>We are now in the <code class="w3-codespan">blog</code> database.</p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Remember:</strong> In MongoDB, a database is not actually created until it gets content!
+    </p>
+  </div>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_query_api.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_create_collection.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <code class="w3-codespan">mongosh</code> Create Collection</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_create_database.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_insert.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Create Collection using <code class="w3-codespan">mongosh</code></h2>
+
+  <p>There are 2 ways to create a collection.</p>
+
+  <h3>Method 1</h3>
+
+  <p>You can create a collection using the <code class="w3-codespan">createCollection()</code> database method.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <div class="w3-code notranslate w3-black">
+      db.createCollection("posts")
+    </div>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_create_collection_method_1"
+      target="_blank">Try it Yourself »</a>
+  </div>
+
+  <h3>Method 2</h3>
+
+  <p>You can also create a collection during the <code class="w3-codespan">insert</code> process.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>We are here assuming <code class="w3-codespan">object</code> is a valid JavaScript object containing post data:
+    </p>
+    <div class="w3-code notranslate w3-black">
+      db.posts.insertOne(object)
+    </div>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_create_collection_method_2"
+      target="_blank">Try it Yourself »</a>
+  </div>
+
+  <p>This will create the "posts" collection if it does not already exist.</p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Remember:</strong> In MongoDB, a collection is not actually created until it gets content!
+    </p>
+  </div>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_create_database.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_insert.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <code class="w3-codespan">mongosh</code> Insert</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_create_collection.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_find.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Insert Documents</h2>
+
+  <p>There are 2 methods to insert documents into a MongoDB database.</p>
+
+  <h3><code class="w3-codespan">insertOne()</code></h3>
+
+  <p>To insert a single document, use the <code class="w3-codespan">insertOne()</code> method.</p>
+
+  <p>This method inserts a single object into the database.</p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> When typing in the shell, after opening an object with curly braces "{"
+      you can press enter to start a new line in the editor without executing the command.
+      The command will execute when you press enter after closing the braces.
+    </p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.insertOne({
+  title: "Post Title 1",
+  body: "Body of post.",
+  category: "News",
+  likes: 1,
+  tags: ["news", "events"],
+  date: Date()
+})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_insertOne" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> If you try to insert documents into a collection that does not exist,
+      MongoDB will create the collection automatically.</p>
+  </div>
+
+  <h3><code class="w3-codespan">insertMany()</code></h3>
+
+  <p>To insert multiple documents at once, use the <code class="w3-codespan">insertMany()</code> method.</p>
+
+  <p>This method inserts an array of objects into the database.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.insertMany([  
+  {
+    title: "Post Title 2",
+    body: "Body of post.",
+    category: "Event",
+    likes: 2,
+    tags: ["news", "events"],
+    date: Date()
+  },
+  {
+    title: "Post Title 3",
+    body: "Body of post.",
+    category: "Technology",
+    likes: 3,
+    tags: ["news", "events"],
+    date: Date()
+  },
+  {
+    title: "Post Title 4",
+    body: "Body of post.",
+    category: "Event",
+    likes: 4,
+    tags: ["news", "events"],
+    date: Date()
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_insertMany" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <br>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_create_collection.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_find.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <code class="w3-codespan">mongosh</code> Find</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_insert.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_update.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Find Data</h2>
+
+  <p>There are 2 methods to find and select data from a MongoDB collection, <code class="w3-codespan">find()</code>
+    and <code class="w3-codespan">findOne()</code>.</p>
+
+  <h3><code class="w3-codespan">find()</code></h3>
+
+  <p>To select data from a collection in MongoDB, we can use the <code class="w3-codespan">find()</code> method.</p>
+
+  <p>This method accepts a query object. If left empty, all documents will be returned.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find()
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find" target="_blank">Try it Yourself »</a>
+  </div>
+
+  <h3><code class="w3-codespan">findOne()</code></h3>
+
+  <p>To select only one document, we can use the <code class="w3-codespan">findOne()</code> method.</p>
+
+  <p>This method accepts a query object. If left empty, it will return the first document it finds.</p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> This method only returns the first match it finds.</p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.findOne()
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_findOne" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+
+  <h2>Querying Data</h2>
+
+  <p>To query, or filter, data we can include a query in our <code class="w3-codespan">find()</code>
+    or <code class="w3-codespan">findOne()</code> methods.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find( {category: "News"} )
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_query" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+
+  <h2>Projection</h2>
+
+  <p>Both find methods accept a second parameter called <code class="w3-codespan">projection</code>.</p>
+
+  <p>This parameter is an <code class="w3-codespan">object</code> that describes which fields to include in the results.
+  </p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> This parameter is optional. If omitted, all fields will be included in the results.</p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>This example will only display the <code class="w3-codespan">title</code>
+      and <code class="w3-codespan">date</code> fields in the results.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find({}, {title: 1, date: 1})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_projection1" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <div class="w3-panel w3-note">
+    <p>Notice that the <code class="w3-codespan">_id</code> field is also included. This field is always included unless
+      specifically excluded.</p>
+  </div>
+
+  <p>We use a <code class="w3-codespan">1</code> to include a field and <code class="w3-codespan">0</code> to exclude a
+    field.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>This time, let's exclude the <code class="w3-codespan">_id</code> field.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find({}, {_id: 0, title: 1, date: 1})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_projection2" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> You cannot use both 0 and 1 in the same object.
+      The only exception is the <code class="w3-codespan">_id</code> field.
+      You should either specify the fields you would like to include or the fields you would like to exclude.</p>
+  </div>
+
+  <p>Let's exclude the date category field. All other fields will be included in the results.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find({}, {category: 0})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_projection3" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>We will get an error if we try to specify both 0 and 1 in the same object.</p>
+
+
+  <div class="w3-example w3-warning">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find({}, {title: 1, date: 0})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_find_projection4" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <br>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_insert.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_update.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <code class="w3-codespan">mongosh</code> Update</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_find.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_delete.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Update Document</h2>
+
+  <p>To update an existing document we can use the
+    <code class="w3-codespan">updateOne()</code> or <code class="w3-codespan">updateMany()</code> methods.
+  </p>
+
+  <p>The first parameter is a query object to define which document or documents should be updated.</p>
+
+  <p>The second parameter is an object defining the updated data.</p>
+
+  <hr>
+
+  <h2><code class="w3-codespan">updateOne()</code></h2>
+
+  <p>The <code class="w3-codespan">updateOne()</code> method will update the first document that is found matching the
+    provided query.</p>
+
+  <p>Let's see what the "like" count for the post with the title of "Post Title 1":</p>
+
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find( { title: "Post Title 1" } ) 
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_update_find1" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <p>Now let's update the "likes" on this post to 2. To do this, we need to use the
+    <code class="w3-codespan">$set</code> operator.
+  </p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.updateOne( { title: "Post Title 1" }, { $set: { likes: 2 } } ) 
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_updateOne" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <p>Check the document again and you'll see that the "like" have been updated.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.find( { title: "Post Title 1" } ) 
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_update_find2" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+
+  <h2>Insert if not found</h2>
+
+  <p>If you would like to insert the document if it is not found, you can use the <code
+      class="w3-codespan">upsert</code> option.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>Update the document, but if not found insert it:</p>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.updateOne( 
+  { title: "Post Title 5" }, 
+  {
+    $set: 
+      {
+        title: "Post Title 5",
+        body: "Body of post.",
+        category: "Event",
+        likes: 5,
+        tags: ["news", "events"],
+        date: Date()
+      }
+  }, 
+  { upsert: true }
+)
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_update_upsert" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <hr>
+
+  <h2><code class="w3-codespan">updateMany()</code></h2>
+
+  <p>The <code class="w3-codespan">updateMany()</code> method will update all documents that match the provided query.
+  </p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>Update <code class="w3-codespan">likes</code> on all documents by 1. For this we will use the <code
+        class="w3-codespan">$inc</code> (increment) operator:</p>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.updateMany({}, { $inc: { likes: 1 } })
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_updateMany" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <p>Now check the likes in all of the documents and you will see that they have all been incremented by 1.</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_find.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_mongosh_delete.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <code class="w3-codespan">mongosh</code> Delete</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_update.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_query_operators.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Delete Documents</h2>
+
+  <p>We can delete documents by using the methods <code class="w3-codespan">deleteOne()</code>
+    or <code class="w3-codespan">deleteMany()</code>.</p>
+
+  <p>These methods accept a query object. The matching documents will be deleted.</p>
+
+  <hr>
+
+  <h2><code class="w3-codespan">deleteOne()</code></h2>
+
+  <p>The <code class="w3-codespan">deleteOne()</code> method will delete the first document that matches the query
+    provided.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.deleteOne({ title: "Post Title 5" })
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_deleteOne" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+
+  <h2><code class="w3-codespan">deleteMany()</code></h2>
+
+  <p>The <code class="w3-codespan">deleteMany()</code> method will delete all documents that match the query provided.
+  </p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.deleteMany({ category: "Technology" })
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_deleteMany" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <br>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_update.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_query_operators.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Query Operators</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_delete.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_update_operators.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Query Operators</h2>
+
+  <p>There are many query operators that can be used to compare and reference document fields.</p>
+
+  <h3>Comparison</h3>
+
+  <p>The following operators can be used in queries to compare values:</p>
+
+  <ul>
+    <li><code class="w3-codespan">$eq</code>: Values are equal</li>
+    <li><code class="w3-codespan">$ne</code>: Values are not equal</li>
+    <li><code class="w3-codespan">$gt</code>: Value is greater than another value</li>
+    <li><code class="w3-codespan">$gte</code>: Value is greater than or equal to another value</li>
+    <li><code class="w3-codespan">$lt</code>: Value is less than another value</li>
+    <li><code class="w3-codespan">$lte</code>: Value is less than or equal to another value</li>
+    <li><code class="w3-codespan">$in</code>: Value is matched within an array</li>
+  </ul>
+
+  <h3>Logical</h3>
+
+  <p>The following operators can logically compare multiple queries. </p>
+
+  <ul>
+    <li><code class="w3-codespan">$and</code>: Returns documents where both queries match</li>
+    <li><code class="w3-codespan">$or</code>: Returns documents where either query matches</li>
+    <li><code class="w3-codespan">$nor</code>: Returns documents where both queries fail to match</li>
+    <li><code class="w3-codespan">$not</code>: Returns documents where the query does not match</li>
+  </ul>
+
+  <h3>Evaluation</h3>
+
+  <p>The following operators assist in evaluating documents.</p>
+
+  <ul>
+    <li><code class="w3-codespan">$regex</code>: Allows the use of regular expressions when evaluating field values</li>
+    <li><code class="w3-codespan">$text</code>: Performs a text search</li>
+    <li><code class="w3-codespan">$where</code>: Uses a JavaScript expression to match documents</li>
+  </ul>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_mongosh_delete.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_update_operators.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Update Operators</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_query_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_intro.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Update Operators</h2>
+
+  <p>There are many update operators that can be used during document updates.</p>
+
+  <h3>Fields</h3>
+
+  <p>The following operators can be used to update fields:</p>
+
+  <ul>
+    <li><code class="w3-codespan">$currentDate</code>: Sets the field value to the current date</li>
+    <li><code class="w3-codespan">$inc</code>: Increments the field value</li>
+    <li><code class="w3-codespan">$rename</code>: Renames the field</li>
+    <li><code class="w3-codespan">$set</code>: Sets the value of a field</li>
+    <li><code class="w3-codespan">$unset</code>: Removes the field from the document</li>
+  </ul>
+
+  <h3>Array</h3>
+
+  <p>The following operators assist with updating arrays.</p>
+
+  <ul>
+    <li><code class="w3-codespan">$addToSet</code>: Adds distinct elements to an array</li>
+    <li><code class="w3-codespan">$pop</code>: Removes the first or last element of an array</li>
+    <li><code class="w3-codespan">$pull</code>: Removes all elements from an array that match the query</li>
+    <li><code class="w3-codespan">$push</code>: Adds an element to an array</li>
+  </ul>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_query_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_intro.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation Pipelines</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_update_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_group.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation Pipelines</h2>
+
+  <p>Aggregation operations allow you to group, sort, perform calculations, analyze data, and much more.</p>
+
+  <p>Aggregation pipelines can have one or more "stages".
+    The order of these stages are important. Each stage acts upon the results of the previous stage.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.aggregate([
+  // Stage 1: Only find documents that have more than 1 like
+  {
+    $match: { likes: { $gt: 1 } }
+  },
+  // Stage 2: Group documents by category and sum each categories likes
+  {
+    $group: { _id: "$category", totalLikes: { $sum: "$likes" } }
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_intro" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <hr>
+
+  <h2>Sample Data</h2>
+
+  <p>To demonstrate the use of stages in a aggregation pipeline, we will load sample data into our database.</p>
+
+  <p>From the MongoDB Atlas dashboard, go to Databases.
+    Click the ellipsis and select "Load Sample Dataset".
+    This will load several sample datasets into your database.</p>
+
+  <p>In the next sections we will explore several aggregation pipeline stages in more detail using this sample data.</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_update_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_group.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation Pipelines</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_update_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_group.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation Pipelines</h2>
+
+  <p>Aggregation operations allow you to group, sort, perform calculations, analyze data, and much more.</p>
+
+  <p>Aggregation pipelines can have one or more "stages".
+    The order of these stages are important. Each stage acts upon the results of the previous stage.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.posts.aggregate([
+  // Stage 1: Only find documents that have more than 1 like
+  {
+    $match: { likes: { $gt: 1 } }
+  },
+  // Stage 2: Group documents by category and sum each categories likes
+  {
+    $group: { _id: "$category", totalLikes: { $sum: "$likes" } }
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_intro" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <hr>
+
+  <h2>Sample Data</h2>
+
+  <p>To demonstrate the use of stages in a aggregation pipeline, we will load sample data into our database.</p>
+
+  <p>From the MongoDB Atlas dashboard, go to Databases.
+    Click the ellipsis and select "Load Sample Dataset".
+    This will load several sample datasets into your database.</p>
+
+  <p>In the next sections we will explore several aggregation pipeline stages in more detail using this sample data.</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_update_operators.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_group.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation $group</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_intro.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_limit.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$group</code></h2>
+
+  <p>This aggregation stage groups documents by the unique <code class="w3-codespan">_id</code> expression provided.</p>
+
+  <div class="w3-panel w3-note">
+    <p>Don't confuse this <code class="w3-codespan">_id</code> expression with the
+      <code class="w3-codespan">_id</code> ObjectId provided to each document.
+    </p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_airbnb" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.listingsAndReviews.aggregate(
+    [ { $group : { _id : "$property_type" } } ]
+)
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_group" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the distinct values from the <code class="w3-codespan">property_type</code> field.</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_intro.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_limit.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation $limit</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_group.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_project.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$limit</code></h2>
+
+  <p>This aggregation stage limits the number of documents passed to the next stage.
+  </p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_mflix" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.movies.aggregate([ { $limit: 1 } ])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_limit" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the 1 movie from the collection.</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_group.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_project.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$project</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_limit.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_sort.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$project</code></h2>
+
+  <p>This aggregation stage passes only the specified fields along to the next aggregation stage.</p>
+
+  <div class="w3-panel w3-note">
+    <p>This is the same projection that is used with the <code class="w3-codespan">find()</code> method.
+    </p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_restaurants" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.restaurants.aggregate([
+  {
+    $project: {
+      "name": 1,
+      "cuisine": 1,
+      "address": 1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_project" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the documents but only include the specified fields.</p>
+
+  <div class="w3-panel w3-note">
+    <p>Notice that the <code class="w3-codespan">_id</code> field is also included. This field is always included unless
+      specifically excluded.</p>
+  </div>
+
+  <p>We use a <code class="w3-codespan">1</code> to include a field and <code class="w3-codespan">0</code> to exclude a
+    field.</p>
+
+  <div class="w3-panel w3-note">
+    <p><strong>Note:</strong> You cannot use both 0 and 1 in the same object. The only exception is the <code
+        class="w3-codespan">_id</code> field.
+      You should either specify the fields you would like to include or the fields you would like to exclude.
+    </p>
+  </div>
+
+  <hr>
+
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_limit.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_sort.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$sort</code></h1>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_project.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_match.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$sort</code></h2>
+
+  <p>This aggregation stage groups sorts all documents in the specified sort order.</p>
+
+  <div class="w3-panel w3-note">
+    <p>Remember that the order of your stages matters. Each stage only acts upon the documents that previous stages
+      provide.</p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_airbnb" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.listingsAndReviews.aggregate([ 
+  { 
+    $sort: { "accommodates": -1 } 
+  },
+  {
+    $project: {
+      "name": 1,
+      "accommodates": 1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_sort" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the documents sorted in descending order by the <code class="w3-codespan">accommodates</code>
+    field.</p>
+
+  <div class="w3-panel w3-note">
+    <p>The sort order can be chosen by using <code class="w3-codespan">1</code>
+      or <code class="w3-codespan">-1</code>.
+      <code class="w3-codespan">1</code> is ascending and <code class="w3-codespan">-1</code> is descending.
+    </p>
+  </div>
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_project.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_match.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$match</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_sort.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_addFields.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$match</code></h2>
+
+  <p>This aggregation stage behaves like a find. It will filter documents that match the query provided.
+  </p>
+
+  <div class="w3-panel w3-note">
+    <p>Using <code class="w3-codespan">$match</code> early in the pipeline can improve performance since it limits the
+      number of documents the next stages must process.
+    </p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_airbnb" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.listingsAndReviews.aggregate([ 
+  { $match : { property_type : "House" } },
+  { $limit: 2 },
+  { $project: {
+    "name": 1,
+    "bedrooms": 1,
+    "price": 1
+  }}
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_match" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will only return documents that have the <code class="w3-codespan">property_type</code> of "House".</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_sort.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_addFields.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$addFields</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_match.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_count.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$addFields</code></h2>
+
+  <p>This aggregation stage adds new fields to documents.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_restaurants" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.restaurants.aggregate([
+  {
+    $addFields: {
+      avgGrade: { $avg: "$grades.score" }
+    }
+  },
+  {
+    $project: {
+      "name": 1,
+      "avgGrade": 1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_addFields" target="_blank">Try
+      it Yourself »</a>
+  </div>
+
+  <p>This will return the documents along with a new field,
+    <code class="w3-codespan">avgGrade</code>,
+    which will contain the average of each restaurants <code class="w3-codespan">grades.score</code>.
+  </p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_match.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_count.php">Next ❯</a>
+  </div>
+
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$count</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_addFields.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_lookup.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$count</code></h2>
+
+  <p>This aggregation stage counts the total amount of documents passed from the previous stage.</p>
+
+
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_restaurants" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.restaurants.aggregate([
+  {
+    $match: { "cuisine": "Chinese" }
+  },
+  {
+    $count: "totalChinese"
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_count" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the number of documents at the <code class="w3-codespan">$count</code> stage as a field called
+    "totalChinese".</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_addFields.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_lookup.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$lookup</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_count.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_out.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$lookup</code></h2>
+
+  <p>This aggregation stage performs a left outer join to a collection in the same database.
+  </p>
+
+  <p>There are four required fields:</p>
+
+  <ul>
+    <li><code class="w3-codespan">from</code>: The collection to use for lookup in the same database</li>
+    <li><code class="w3-codespan">localField</code>: The field in the primary collection that can be used as a unique
+      identifier in the <code class="w3-codespan">from</code> collection.</li>
+    <li><code class="w3-codespan">foreignField</code>: The field in the <code class="w3-codespan">from</code> collection
+      that can be used as a unique identifier in the primary collection.</li>
+    <li><code class="w3-codespan">as</code>: The name of the new field that will contain the matching documents from the
+      <code class="w3-codespan">from</code> collection.</li>
+  </ul>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_mflix" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.comments.aggregate([
+  {
+    $lookup: {
+      from: "movies",
+      localField: "movie_id",
+      foreignField: "_id",
+      as: "movie_details",
+    },
+  },
+  {
+    $limit: 1
+  }
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_lookup" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will return the movie data along with each comment.</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_count.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_aggregations_out.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Aggregation <code class="w3-codespan">$out</code></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_lookup.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_indexing_search.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Aggregation <code class="w3-codespan">$out</code></h2>
+
+  <p>This aggregation stage writes the returned documents from the aggregation pipeline to a collection.
+  </p>
+
+  <div class="w3-panel w3-note">
+    <p>The <code class="w3-codespan">$out</code> stage must be the last stage of the aggregation pipeline.
+    </p>
+  </div>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <p>In this example, we are using the "sample_airbnb" database loaded from our sample data in the
+      <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+    </p>
+    <pre class="language-jsx notranslate w3-white"><code>db.listingsAndReviews.aggregate([
+  {
+    $group: {
+      _id: "$property_type",
+      properties: {
+        $push: {
+          name: "$name",
+          accommodates: "$accommodates",
+          price: "$price",
+        },
+      },
+    },
+  },
+  { $out: "properties_by_type" },
+])
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_aggregations_out" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>The first stage will group properties by the
+    <code class="w3-codespan">property_type</code> and include the <code class="w3-codespan">name</code>,
+    <code class="w3-codespan">accommodates</code>, and <code class="w3-codespan">price</code> fields for each.
+    The <code class="w3-codespan">$out</code> stage will create a new collection called
+    <code class="w3-codespan">properties_by_type</code> in the current database and write the resulting documents into
+    that collection.
+  </p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_lookup.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_indexing_search.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>Indexing &amp; Search</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_out.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_schema_validation.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Indexing &amp; Search</h2>
+
+  <p>MongoDB Atlas comes with a full-text search engine that can be used to search for documents in a collection.</p>
+
+  <p><a
+      href="https://www.mongodb.com/docs/atlas/atlas-search?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral"
+      target="_blank">Atlas Search</a> is powered by Apache Lucene.</p>
+
+  <hr>
+
+  <h2>Creating an Index</h2>
+
+  <p>We'll use the Atlas dashboard to create an index on the "sample_mflix" database
+    from the sample data that we loaded in the
+    <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+  </p>
+
+  <ol>
+    <li>From the Atlas dashboard, click on your <strong>Cluster name</strong> then the <strong>Search</strong> tab.</li>
+    <li>Click on the <strong>Create Search Index</strong> button.</li>
+    <li>Use the <strong>Visual Editor</strong> and click Next.</li>
+    <li>Name your index, choose the Database and Collection you want to index and click Next.
+      <ul>
+        <li>If you name your index "default" you will not have to specify the index name in the
+          <code class="w3-codespan">$search</code> pipeline stage.
+        </li>
+        <li>Choose the <code class="w3-codespan">sample_mflix</code> database and the <code
+            class="w3-codespan">movies</code> collection.</li>
+      </ul>
+    </li>
+    <li>Click <strong>Create Search Index</strong> and wait for the index to complete.</li>
+  </ol>
+
+  <hr>
+
+  <h2>Running a Query</h2>
+
+  <p>To use our search index, we will use the <code class="w3-codespan">$search</code> operator in our aggregation
+    pipeline.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.movies.aggregate([
+  {
+    $search: {
+      index: "default", // optional unless you named your index something other than "default"
+      text: {
+        query: "star wars",
+        path: "title"
+      },
+    },
+  },
+  {
+    $project: {
+      title: 1,
+      year: 1,
+    }
+  }
+])</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_indexing_search" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>The first stage of this aggregation pipeline will return all documents in the
+    <code class="w3-codespan">movies</code> collection that contain the word "star" or "wars" in the
+    <code class="w3-codespan">title</code> field.
+  </p>
+
+  <p>The second stage will project the <code class="w3-codespan">title</code> and <code class="w3-codespan">year</code>
+    fields from each document.</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_aggregations_out.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_schema_validation.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Schema Validation</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_indexing_search.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_data_api.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Schema Validation</h2>
+
+  <p>By default MongoDB has a flexible schema. This means that there is no strict schema validation set up initially.
+  </p>
+
+  <p>Schema validation rules can be created in order to ensure that all documents a collection share a similar
+    structure.</p>
+
+  <hr>
+
+  <h2>Schema Validation</h2>
+
+  <p>MongoDB supports <a href="http://json-schema.org/" target="_blank">JSON Schema</a> validation. The <code
+      class="w3-codespan">$jsonSchema</code>
+    operator allows us to define our document structure.</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>db.createCollection("posts", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [ "title", "body" ],
+      properties: {
+        title: {
+          bsonType: "string",
+          description: "Title of post - Required."
+        },
+        body: {
+          bsonType: "string",
+          description: "Body of post - Required."
+        },
+        category: {
+          bsonType: "string",
+          description: "Category of post - Optional."
+        },
+        likes: {
+          bsonType: "int",
+          description: "Post like count. Must be an integer - Optional."
+        },
+        tags: {
+          bsonType: ["string"],
+          description: "Must be an array of strings - Optional."
+        },
+        date: {
+          bsonType: "date",
+          description: "Must be a date - Optional."
+        }
+      }
+    }
+  }
+})
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_schema_validation" target="_blank">Try it
+      Yourself »</a>
+  </div>
+
+  <p>This will create the <code class="w3-codespan">posts</code> collection in the current database and specify the JSON
+    Schema validation requirements for the collection.</p>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_indexing_search.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_data_api.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Data API</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_schema_validation.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_drivers.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Data API</h2>
+
+  <p>The <a
+      href="https://www.mongodb.com/docs/atlas/api/data-api?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral"
+      target="_blank">MongoDB Data API</a> can be used to query and update data in a MongoDB database without the need
+    for language specific drivers.</p>
+
+  <div class="w3-panel w3-note">
+    <p>Language drivers should be used when possible,
+      but the MongoDB Data API comes in handy when drivers are not available or drivers are overkill for the
+      application.
+    </p>
+  </div>
+
+  <hr>
+
+  <h2>Read &amp; Write with the MongoDB Data API</h2>
+
+  <p>The MongoDB Data API is a pre-configured set of HTTPS endpoints that can be used to read and write data to a
+    MongoDB Atlas database.</p>
+
+  <p>With the MongoDB Data API, you can create, read, update, delete, or aggregate documents in a MongoDB Atlas
+    database.</p>
+
+  <hr>
+
+  <h2>Cluster Configuration</h2>
+
+  <p>In order to use the Data API, you must first enable the functionality from the Atlas UI.</p>
+
+  <p>From the MongoDB Atlas dashboard, navigate to <strong>Data API</strong> in the left menu.</p>
+
+  <p>Select the data source(s) you would like to enable the API on and click <strong>Enable the Data API</strong>.</p>
+
+  <hr>
+
+  <h2>Access Level</h2>
+
+  <p>By default, no access is granted. Select the access level you'd like to grant the Data API. The choices are: No
+    Access, Read Only, Read and Write, or Custom Access.</p>
+
+  <hr>
+
+  <h2>Data API Key</h2>
+
+  <p>In order to authenticate with the Data API, you must first create a Data API key.</p>
+
+  <p>Click <strong>Create API Key</strong>, enter a name for the key, then click <strong>Generate API Key</strong>.</p>
+
+  <p>Be sure to copy the API key and save it somewhere safe. <em>You will not get another chance to see this key
+      again.</em></p>
+
+  <hr>
+
+  <h2>Sending a Data API Request</h2>
+
+  <p>We can now use the Data API to send a request to the database.</p>
+
+  <p>In the next example, we'll use curl to find the first document in the
+    <code class="w3-codespan">movies</code> collection of our <code class="w3-codespan">sample_mflix</code> database.
+    We loaded this sample data in the
+    <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+  </p>
+
+  <p>To run this example, you'll need your App Id, API Key, and Cluster name. </p>
+
+  <p>You can find your App Id in the <strong>URL Endpoint</strong> field of the Data API page in the MongoDB Atlas UI.
+  </p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-jsx notranslate w3-white"><code>curl --location --request POST 'https://data.mongodb-api.com/app/&lt;DATA API APP ID&gt;/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: &lt;DATA API KEY&gt;' \
+--data-raw '{
+    "dataSource":"&lt;CLUSTER NAME&gt;",
+    "database":"sample_mflix",
+    "collection":"movies",
+    "projection": {"title": 1}
+}'
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_data_api" target="_blank">Try it Yourself
+      »</a>
+  </div>
+
+  <hr>
+
+  <h2>Data API Endpoints</h2>
+
+  <p>In the previous example, we used the <code class="w3-codespan">findOne</code> endpoint in our URL.</p>
+
+  <p>There are several endpoints available for use with the Data API.</p>
+
+  <p>All endpoints start with the Base URL:
+    <code class="w3-codespan">https://data.mongodb-api.com/app/&lt;Data API App ID&gt;/endpoint/data/v1/action/</code>
+  </p>
+
+  <hr>
+
+  <h2>Find a Single Document</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/findOne</code>
+
+  <p>The <code class="w3-codespan">findOne</code> endpoint is used to find a single document in a collection.</p>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;,
+  "projection": &lt;projection&gt;
+}
+</code></pre>
+  </div>
+
+  <hr>
+  <h2>Find Multiple Documents</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/find</code>
+
+  <p>The <code class="w3-codespan">find</code> endpoint is used to find multiple documents in a collection.</p>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;,
+  "projection": &lt;projection&gt;,
+  "sort": &lt;sort expression&gt;,
+  "limit": &lt;number&gt;,
+  "skip": &lt;number&gt;
+}
+</code></pre>
+  </div>
+
+  <h2>Insert a Single Document</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/insertOne</code>
+
+  <p>The <code class="w3-codespan">insertOne</code> endpoint is used to insert a single document into a collection.</p>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "document": &lt;document&gt;
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Insert Multiple Documents</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/insertMany</code>
+
+  <p>The <code class="w3-codespan">insertMany</code> endpoint is used to insert multiple documents into a collection.
+  </p>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "documents": [&lt;document&gt;, &lt;document&gt;, ...]
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Update a Single Document</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/updateOne</code>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;,
+  "update": &lt;update expression&gt;,
+  "upsert": true|false
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Update Multiple Documents</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/updateMany</code>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;,
+  "update": &lt;update expression&gt;,
+  "upsert": true|false
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Delete a Single Document</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/deleteOne</code>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Delete Multiple Documents</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/deleteMany</code>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "filter": &lt;query filter&gt;
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Aggregate Documents</h2>
+
+  <h3>Endpoint</h3>
+
+  <code class="w3-codespan">POST Base_URL/aggregate</code>
+
+  <h3>Request Body</h3>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <pre class="language-json notranslate w3-white"><code>{
+  "dataSource": "&lt;data source name&gt;",
+  "database": "&lt;database name&gt;",
+  "collection": "&lt;collection name&gt;",
+  "pipeline": [&lt;pipeline expression&gt;, ...]
+}
+</code></pre>
+  </div>
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_schema_validation.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_drivers.php">Next ❯</a>
+  </div>
+
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Drivers</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_data_api.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_nodejs_connect_database.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Drivers</h2>
+
+  <p>The MongoDB Shell (mongosh) is great, but generally you will need to use MongoDB in your application.
+    To do this, MongoDB has many language drivers.</p>
+
+  <p>The language drivers allow you to interact with your MongoDB database using the methods you've learned
+    so far in `mongosh` but directly in your application.
+  </p>
+
+  <p>These are the current officially supported drivers:</p>
+
+  <ul>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/c/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">C</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/cxx/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">C++</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/csharp/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">C#</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/go/current/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Go</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/java-drivers/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Java</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/node/current/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Node.js</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/php/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">PHP</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/python/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Python</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/ruby-driver/current/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Ruby</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/rust/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Rust</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/scala/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Scala</a>
+    </li>
+    <li><a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/swift/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">Swift</a>
+    </li>
+  </ul>
+
+  <div class="w3-panel w3-note">
+    <p>There are other
+      <a target="_blank"
+        href="https://www.mongodb.com/docs/drivers/community-supported-drivers/?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">
+        community supported libraries</a> as well.
+    </p>
+  </div>
+
+  <p>Let's see how to use the drivers using
+    <a href="mongodb_nodejs_connect_database.php">Node.js</a> next.
+  </p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_data_api.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_nodejs_connect_database.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Node.js Database Interaction</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_drivers.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_charts.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>Node.js Database Interaction</h2>
+
+  <p>For this tutorial, we will use a MongoDB Atlas database.
+    If you don't already have a MongoDB Atlas account,
+    you can create one for free at
+    <a target="_blank"
+      href="https://www.mongodb.com/cloud/atlas/register?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral">MongoDB
+      Atlas</a>.
+  </p>
+
+  <p>We will also use the "sample_mflix" database loaded from our sample data in the
+    <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+  </p>
+
+  <hr>
+
+  <h2>MongoDB Node.js Driver Installation</h2>
+
+  <p>To use MongoDB with Node.js, you will need to install the <code class="w3-codespan">mongodb</code> package in your
+    Node.js project.</p>
+
+  <p>Use the following command in your terminal to install the <code class="w3-codespan">mongodb</code> package:</p>
+
+  <div class="w3-example">
+    <div class="w3-code notranslate w3-black">
+      npm install mongodb
+    </div>
+  </div>
+
+  <p>We can now use this package to connect to a MongoDB database.</p>
+
+  <p>Create an <code class="w3-codespan">index.js</code> file in your project directory.</p>
+
+  <div class="w3-example">
+    <p><code class="w3-codespan">index.js</code></p>
+    <pre class="language-jsx notranslate w3-white"><code>const { MongoClient } = require('mongodb');</code></pre>
+  </div>
+
+  <hr>
+
+  <h2>Connection String</h2>
+
+  <p>In order to connect to our MongoDB Atlas database, we'll need to get our connection string from the Atlas
+    dashboard.</p>
+
+  <p>Go to <strong>Database</strong> then click the <strong>CONNECT</strong> button on your Cluster.</p>
+
+  <p>Choose <strong>Connect your application</strong> then copy your connection string.</p>
+
+  <p>Example:
+    <code
+      class="w3-codespan">mongodb+srv://&lt;username&gt;:&lt;password&gt;@&lt;cluster.string&gt;.mongodb.net/myFirstDatabase?retryWrites=true&amp;w=majority</code>
+  </p>
+
+  <p>You will need to replace the <code class="w3-codespan">&lt;username&gt;</code>, <code
+      class="w3-codespan">&lt;password&gt;</code>,
+    and <code class="w3-codespan">&lt;cluster.string&gt;</code> with your MongoDB Atlas username, password, and cluster
+    string.</p>
+
+  <hr>
+
+  <h2>Connecting to MongoDB</h2>
+
+  <p>Let's add to our <code class="w3-codespan">index.js</code> file.</p>
+
+  <div class="w3-example">
+    <p><code class="w3-codespan">index.js</code></p>
+    <pre class="language-jsx notranslate w3-white"><code>const { MongoClient } = require('mongodb');
+
+const uri = "&lt;Your Connection String&gt;";
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    await client.connect();
+    const db = client.db('sample_mflix');
+    const collection = db.collection('movies');
+
+    // Find the first document in the collection
+    const first = await collection.findOne();
+    console.log(first);
+  } finally {
+    // Close the database connection when finished or an error occurs
+    await client.close();
+  }
+}
+run().catch(console.error);
+</code></pre>
+    <a class="w3-btn w3-margin-bottom" href="showmongodb.php?filename=demo_nodejs" target="_blank">Try it Yourself »</a>
+  </div>
+
+  <p>Run this file in your terminal.</p>
+
+  <div class="w3-example">
+    <div class="w3-code notranslate w3-black">
+      node index.js
+    </div>
+  </div>
+
+  <p>You should see the first document logged to the console.</p>
+
+  <hr>
+
+  <h2>CRUD &amp; Document Aggregation</h2>
+
+  <p>Just as we did using <code class="w3-codespan">mongosh</code>,
+    we can use the MongoDB Node.js language driver to create, read, update, delete, and aggregate documents in the
+    database.</p>
+
+  <p>Expanding on the previous example, we can replace the <code class="w3-codespan">collection.findOne()</code>
+    with <code class="w3-codespan">find()</code>, <code class="w3-codespan">insertOne()</code>,
+    <code class="w3-codespan">insertMany()</code>, <code class="w3-codespan">updateOne()</code>,
+    <code class="w3-codespan">updateMany()</code>, <code class="w3-codespan">deleteOne()</code>,
+    <code class="w3-codespan">deleteMany()</code>, or <code class="w3-codespan">aggregate()</code>.
+  </p>
+
+  <p>Give some of those a try.</p>
+
+  <hr>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_drivers.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="mongodb_charts.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB Charts</h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_nodejs_connect_database.php">❮ Home</a>
+    <a class="w3-right w3-btn" href="mongodb_exercises.php">Next ❯</a>
+  </div>
+
+  <hr>
+
+  <h2>MongoDB Charts</h2>
+
+  <p><a
+      href="https://www.mongodb.com/docs/charts?utm_campaign=w3schools_mdb&amp;utm_source=w3schools&amp;utm_medium=referral"
+      target="_blank">MongoDB Charts</a> lets you visualize your data in a simple, intuitive way.</p>
+
+  <hr>
+
+  <h2>MongoDB Charts Setup</h2>
+
+  <p>From the MongoDB Atlas dashboard, go to the <strong>Charts</strong> tab.</p>
+
+  <p>If you've never used Charts before, click the <strong>Activate Now</strong> button. This will take about 1 minute
+    to complete.</p>
+
+  <p>You'll see a new dashboard. Click the dashboard name to open it.</p>
+
+  <hr>
+
+  <h2>Creating a Chart</h2>
+
+  <p>Create a new chart by clicking the <strong>Add Chart</strong> button.</p>
+
+  <p>Visually creating a chart is intuitive. Select the data sources that you want to use.</p>
+
+  <hr>
+
+  <h2>Example:</h2>
+
+  <p>In this example, we are using the "sample_mflix" database loaded from our sample data in the
+    <a href="mongodb_aggregations_intro.php">Intro to Aggregations</a> section.
+  </p>
+
+  <p>Under <strong>Data Source</strong>, select the <strong>Movies</strong> collection.</p>
+
+  <p>Let's visualize how many movies were released in each year.</p>
+
+  <p>Drag the <strong>Year</strong> field to the <strong>Y Axis</strong> field and set the <strong>Bin Size</strong> to
+    1.</p>
+
+  <p>Drag the <strong>_id</strong> field to the <strong>X Axis</strong> field and make sure <code
+      class="w3-codespan">COUNT</code> is selected for the Aggregate.</p>
+
+  <p>You should now see a bar chart with the number of movies released in each year.</p>
+
+  <img src="charts.jpg" style="width:100%">
+
+
+  <hr>
+
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_nodejs_connect_database.php">❮ Home</a>
+    <a class="w3-right w3-btn" href="mongodb_exercises.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+
+  <div id="mainLeaderboard" style="overflow:hidden;">
+    <!-- MainLeaderboard-->
+    <!-- adngin-main_leaderboard_courses-0 -->
+    <div id="adngin-main_leaderboard_courses-0"></div>
+  </div>
+  <h1>MongoDB <span class="color_h1">Exercises</span></h1>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_charts.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="index.php">Next ❯</a>
+  </div>
+  <hr>
+  <p class="intro">You can test your MongoDB skills with W3Schools' Exercises.</p>
+  <hr>
+  <h2>Exercises</h2>
+  <p>We have gathered a variety of MongoDB exercises (with answers) for each MongoDB Chapter.</p>
+  <p>Try to solve an exercise by editing some code, or show the answer to see what you've done wrong.</p>
+  <h2>Count Your Score</h2>
+  <p>You will get 1 point for
+    each correct answer. Your score and total score will always be displayed.</p>
+
+  <div class="ws-black w3-padding w3-margin-top w3-round">
+    <h2>Start Mongodb Exercises</h2>
+    <p>Good luck!</p>
+    <p><a href="exercise.php?filename=exercise_get_started1" target="_blank" class="ws-btn"
+        style="margin-top:10px;padding:15px 25px;font-size:18px">Start MongoDB Exercises ❯</a></p>
+  </div>
+  <div class="w3-note w3-panel">
+    <p>If you don't know MongoDB, we suggest that you read our <a href="index.php">MongoDB Tutorial</a> from scratch.
+    </p>
+  </div>
+
+  <hr>
+  <!--<style>  
+
+#w3_cert_badge {
+  position: absolute;
+  right: 5%;
+  width: 220px;
+  transform: rotate(10deg);
+  bottom: -20%;
+}
+
+#w3_cert_arrow {
+  position: absolute;
+  right: 220px;
+  width: 220px;
+  transform: rotate(10deg);
+  bottom: 0;
+  z-index: 1;
+}
+
+#getdiploma {
+  position: relative;
+  padding: 0 60px 50px 60px;
+  margin-bottom: 125px;
+  border-radius: 16px;
+  background-color: #282A35;
+  color: #FFC0C7;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#getdiploma h2 {
+  font-size:50px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: 'Source Sans Pro', sans-serif
+}
+
+#getdiploma p {
+  font-size: 42px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: 'Source Sans Pro', sans-serif
+}
+
+#getdiploma a {
+  border-radius: 50px;
+  mxargin-top: 50px;
+  font-size: 18px;
+  background-color: #04AA6D;
+  padding: 17px 55px
+}
+
+#getdiploma a:hover,
+#getdiploma a:active {
+  background-color: #059862 !important;
+}
+
+
+@media screen and (max-width: 1442px) {
+  #w3_cert_arrow {
+    right: 212px;
+    bottom: -15px;
+  }
+}
+
+
+@media screen and (max-width: 1202px) {
+  #w3_cert_arrow {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #w3_cert_arrow {
+    display: block;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  #w3_cert_arrow {
+    display: none;
+  }
+  #getdiploma h2 {
+    font-size: 44px;
+  }
+  #getdiploma p {
+    font-size: 30px;
+  }
+
+  #getdiploma a {
+    width: 100%;
+  }
+  #w3_cert_badge {
+    top: -16px;
+    right: -8px;
+    width: 100px;
+  }
+  #getdiploma  {
+    margin-bottom: 55px;
+  }
+}
+</style>
+
+<div class="w3-panel" id="getdiploma">
+
+<h2>Kickstart your career</h2>
+<p>Get certified by completing <span id="hey">the</span> <span id="coursetopic"></span> course</p>
+<script>
+var foldername;
+function getCourseFolder() {
+  var pathname = window.location.pathname;
+  if (pathname.substr(0,1) == "/") {pathname = pathname.substr(1);}
+  pos = pathname.indexOf("/");
+  foldername = pathname.substr(0, pos);
+  foldername = foldername.toUpperCase();
+  if (foldername == "JS") foldername = "JavaScript";
+  if (foldername == "QUIZTEST" || foldername == "EXERCISES") {
+    document.getElementById("hey").innerText = "a";
+  }
+  if (foldername == "QUIZTEST" || foldername == "EXERCISES") foldername = "";
+  if (foldername == "CS") foldername = "C#";
+  if (foldername == "CYBERSECURITY") foldername = "Cyber Security";  
+  if (foldername == "CPP") foldername = "C++";
+  document.getElementById("coursetopic").innerText = foldername;
+}
+getCourseFolder();
+</script>
+<a class="w3-btn w3-margin-bottom" href="https://shop.w3schools.com/collections/course-catalog" target="_blank">Get certified</a>
+
+<svg id="w3_cert_arrow" viewBox="0 0 170 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.7747 42.7064C9.7747 42.7064 19.5575 77.2951 44.4558 84.8113C62.0225 90.1142 81.0061 80.1196 77.791 68.3309C76.0904 62.0955 69.0574 62.4735 65.5106 65.8444C59.1003 71.9368 67.8591 89.7423 77.9205 96.1324C112.816 118.295 161.943 84.5867 161.943 84.5867" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M159.804 93.8429L162.704 84.4917L152.715 80.8293" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<svg id="w3_cert_badge" data-name="w3_cert_badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><style>.cls-1{fill:#04aa6b;}.cls-2{font-size:23px;}.cls-2,.cls-3,.cls-4{fill:#fff;}.cls-2,.cls-3{font-family:RobotoMono-Medium, Roboto Mono;font-weight:500;}.cls-3{font-size:20.08px;}</style></defs><circle class="cls-1" cx="150" cy="150" r="146.47" transform="translate(-62.13 150) rotate(-45)"/><text class="cls-2" transform="translate(93.54 63.89) rotate(-29.5)">w</text><text class="cls-2" transform="translate(107.13 56.35) rotate(-20.8)">3</text><text class="cls-2" transform="matrix(0.98, -0.21, 0.21, 0.98, 121.68, 50.97)">s</text><text class="cls-2" transform="translate(136.89 47.84) rotate(-3.47)">c</text><text class="cls-2" transform="translate(152.39 47.03) rotate(5.12)">h</text><text class="cls-2" transform="translate(167.85 48.54) rotate(13.72)">o</text><text class="cls-2" transform="translate(182.89 52.35) rotate(22.34)">o</text><text class="cls-2" transform="matrix(0.86, 0.52, -0.52, 0.86, 197.18, 58.36)">l</text><text class="cls-2" transform="matrix(0.77, 0.64, -0.64, 0.77, 210.4, 66.46)">s</text><text class="cls-3" transform="translate(35.51 186.66) rotate(69.37)"> </text><text class="cls-3" transform="matrix(0.47, 0.88, -0.88, 0.47, 41.27, 201.28)">C</text><text class="cls-3" transform="matrix(0.58, 0.81, -0.81, 0.58, 48.91, 215.03)">E</text><text class="cls-3" transform="matrix(0.67, 0.74, -0.74, 0.67, 58.13, 227.36)">R</text><text class="cls-3" transform="translate(69.16 238.92) rotate(39.44)">T</text><text class="cls-3" transform="matrix(0.85, 0.53, -0.53, 0.85, 81.47, 248.73)">I</text><text class="cls-3" transform="translate(94.94 256.83) rotate(24.36)">F</text><text class="cls-3" transform="translate(109.34 263.09) rotate(16.83)">I</text><text class="cls-3" transform="translate(124.46 267.41) rotate(9.34)">E</text><text class="cls-3" transform="translate(139.99 269.73) rotate(1.88)">D</text><text class="cls-3" transform="translate(155.7 270.01) rotate(-5.58)"> </text><text class="cls-3" transform="translate(171.32 268.24) rotate(-13.06)"> </text><text class="cls-2" transform="translate(187.55 266.81) rotate(-21.04)">.</text><text class="cls-3" transform="translate(203.27 257.7) rotate(-29.24)"> </text><text class="cls-3" transform="translate(216.84 249.83) rotate(-36.75)"> </text><text class="cls-3" transform="translate(229.26 240.26) rotate(-44.15)">2</text><text class="cls-3" transform="translate(240.39 229.13) rotate(-51.62)">0</text><text class="cls-3" transform="translate(249.97 216.63) rotate(-59.17)">2</text><text class="cls-3" transform="matrix(0.4, -0.92, 0.92, 0.4, 257.81, 203.04)">3</text><path class="cls-4" d="M196.64,136.31s3.53,3.8,8.5,3.8c3.9,0,6.75-2.37,6.75-5.59,0-4-3.64-5.81-8-5.81h-2.59l-1.53-3.48,6.86-8.13a34.07,34.07,0,0,1,2.7-2.85s-1.11,0-3.33,0H194.79v-5.86H217.7v4.28l-9.19,10.61c5.18.74,10.24,4.43,10.24,10.92s-4.85,12.3-13.19,12.3a17.36,17.36,0,0,1-12.41-5Z"/><path class="cls-4" d="M152,144.24l30.24,53.86,14.94-26.61L168.6,120.63H135.36l-13.78,24.53-13.77-24.53H77.93l43.5,77.46.15-.28.16.28Z"/></svg>
+
+</div>
+-->
+  <br>
+  <div class="w3-clear nextprev">
+    <a class="w3-left w3-btn" href="mongodb_charts.php">❮ Previous</a>
+    <a class="w3-right w3-btn" href="index.php">Next ❯</a>
+  </div>
+  <div id="mypagediv2" style="position:relative;text-align:center;"></div>
+  <br>
+
+</body>
+
+</html>
