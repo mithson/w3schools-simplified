@@ -39,5 +39,13 @@ def mongodb():
 def javascript():
     return redirect(url_for('js'))
 
+@app.route('/react')
+def react():
+    return render_template('react.html')
+
+@app.route('/django')
+def django():
+    return render_template('django.html')
+
 if __name__ == '__main__':
     app.run(port=8000)
