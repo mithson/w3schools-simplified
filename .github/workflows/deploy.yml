@@ -1,8 +1,9 @@
 name: Deploying
 
 on:
-    push:
-        branches: [feature]
+  push:
+    branches:
+      - feature  # Replace with the name of your main branch
 
 jobs:
     start:
@@ -13,10 +14,10 @@ jobs:
 
      - name: executing remote ssh commands using ssh key
        uses: appleboy/ssh-action@master
-       with:
-       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
-       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
-       aws-region: ap-south-1
-       instance-ids: ${{ secrets.INSTANCE_ID  }}
-          comment: Deploy the feature branch
-          command: /bin/sh ./deploy.sh
+       with: 
+           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
+           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
+           aws-region: ap-south-1
+           instance-ids: ${{ secrets.INSTANCE_ID  }}
+           comment: Deploy the feature branch
+           command: /bin/sh ./deploy.sh
