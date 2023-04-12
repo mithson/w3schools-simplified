@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, send_file
+import os
 
 app = Flask(__name__)
 
@@ -41,11 +42,13 @@ def javascript():
 
 @app.route('/react')
 def react():
-    return render_template('react.html')
+    file_path = os.path.join(app.root_path, 'templates', 'react.html')
+    return send_file(file_path, as_attachment=True)
 
 @app.route('/django')
 def django():
-    return render_template('django.html')
+    file_path = os.path.join(app.root_path, 'templates', 'django.html')
+    return send_file(file_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(port=8000)
